@@ -1,0 +1,21 @@
+server:
+  port: 8002  #端口号修改为 8002
+
+spring:
+  application:
+    name: microServiceCloudProviderDept  #微服务名称，不做修改，与 micro-service-cloud-provider-dept-8001 的配置保持一致
+
+  datasource:
+    username: root        #数据库登陆用户名
+    password: 123456        #数据库登陆密码
+    url: jdbc:mysql://127.0.0.1:3306/spring_cloud_db2?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true       #数据库url
+    driver-class-name: com.mysql.jdbc.Driver                  #数据库驱动
+
+eureka:
+  client: #将客户端注册到 eureka 服务列表内
+    service-url:
+      #defaultZone: http://eureka7001:7001/eureka  #这个地址是 7001注册中心在 application.yml 中暴露出来额注册地址 （单机版）
+      defaultZone: http://localhost:7001/eureka/ #,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/  #将服务注册到 Eureka 集群
+  instance:
+    instance-id: spring-cloud-provider-8002 #修改自定义的服务名称信息
+    prefer-ip-address: true  #显示访问路径的 ip 地址

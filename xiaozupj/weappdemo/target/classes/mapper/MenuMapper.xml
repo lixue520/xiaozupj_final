@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--找到namespace是因为加了@Mapper注解-->
+<mapper namespace="cn.edu.guet.weappdemo.mapper.MenuMapper">
+
+    <resultMap id="Base" type="cn.edu.guet.weappdemo.bean.MySwiperLeft">
+        <result column="right_id" jdbcType="BIGINT" property="right_id"/>
+        <result column="note" jdbcType="VARCHAR" property="note" />
+        <result column="extra" jdbcType="VARCHAR" property="extra" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="thumb" jdbcType="VARCHAR" property="thumb" />
+        <result column="Image" jdbcType="VARCHAR" property="Image" />
+        <result column="text" jdbcType="VARCHAR" property="text" />
+    </resultMap>
+    <resultMap id="left" type="cn.edu.guet.weappdemo.bean.BaseMenu">
+        <result column="left_id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="img" jdbcType="VARCHAR" property="img" />
+    </resultMap>
+    <resultMap id="menu" type="cn.edu.guet.weappdemo.bean.DishesMenu">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="nums" jdbcType="INTEGER" property="nums"/>
+        <result column="img" jdbcType="VARCHAR" property="img" />
+
+    </resultMap>
+    <sql id="Base_Column_List">
+        right_id,note,extra,title,thumb,Image,text
+    </sql>
+    <sql id="left_menu">
+        left_id,name,img
+    </sql>
+    <sql id="Menu">
+        id,type,name,price,nums
+    </sql>
+<!--  查询语句id对应mapper中的方法名  -->
+    <select id="findAllMenu" resultMap="Base">
+        select <include refid="Base_Column_List"></include>
+        from swiper_right
+    </select>
+    <select id="find_All_Menu_Content" resultMap="left">
+        select <include refid="left_menu"></include>
+        from swiper_left
+    </select>
+    <select id="findAll" resultMap="menu">
+        select d.*,s.img
+        from swiper_left s,dishes_menu d
+        where d.id=s.left_id
+    </select>
+    <select id="Select_Dishes_Menu" resultMap="menu">
+         select * from dishes_menu
+    </select>
+    <!--  个体插入数据  -->
+    <insert id="Add_Img" parameterType="cn.edu.guet.weappdemo.bean.BaseMenu">
+        insert into swiper_left(left_id,name,img) values (#{id},#{name},#{img})
+    </insert>
+    <!--  批量插入数据：一定要指名类型为List，否则插入会是? 插入默认是返回int，这里mapper返回的是 ArrayList，因此会报错-->
+    <insert id="Add_Order"  parameterType="java.util.ArrayList" >
+        insert into swiper_left(left_id,name,img)
+        values
+            <foreach collection="list" item="item" index="index" separator="," >
+                (#{item.id},#{item.name},#{item.img})
+            </foreach>
+    </insert>
+</mapper>
+

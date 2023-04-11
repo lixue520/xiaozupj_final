@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.weappdemo.mapper.FoodMapper">
+    <insert id="addFood">
+        INSERT INTO item(
+            id,
+            product_id,
+            product_category,
+            product_name,
+            price,
+            Preferential_price,
+            stock,
+            img,
+            cost_price,
+            taste,
+            specification
+        )
+        VALUES(
+                  #{id},
+                  #{product_id},
+                  #{product_category},
+                  #{product_name},
+                  #{price},
+                  #{Preferential_price},
+                  #{stock},
+                  #{img},
+                  #{cost_price},
+                  #{taste},
+                  #{specification}
+              )
+    </insert>
+    <update id="editFood">
+            UPDATE item SET product_category=#{product_category},product_name=#{product_name},price=#{price}
+            WHERE product_id=#{product_id}
+    </update>
+    <delete id="deleteFood">
+        DELETE FROM item WHERE product_id=#{value}
+    </delete>
+    <select id="getFoodList" resultType="cn.edu.guet.weappdemo.bean.FoodContent">
+        SELECT *
+        FROM item;
+    </select>
+    <select id="selectFoodByProductId" resultType="cn.edu.guet.weappdemo.bean.FoodContent">
+        SELECT *
+        FROM item
+        WHERE product_id=#{value}
+    </select>
+    <select id="selectFoodByProductName" resultType="cn.edu.guet.weappdemo.bean.FoodContent">
+        SELECT *
+        FROM item
+        WHERE product_name=#{value}
+    </select>
+    <select id="optionFood" resultType="cn.edu.guet.weappdemo.bean.FoodContent">
+        SELECT *
+        FROM item
+        WHERE product_category=#{value}
+    </select>
+</mapper>

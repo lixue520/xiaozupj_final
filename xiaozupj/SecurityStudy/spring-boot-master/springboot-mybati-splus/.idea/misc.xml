@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/../springboot-redis/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-email/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-minio/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-scheduled/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-async/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-swagger/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-security/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-redis-publish-subscribe/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-redis-message-queue/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-actuator/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-log/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-exception/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-log-exception/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-log4j/pom.xml" />
+        <option value="$PROJECT_DIR$/../springboot-security-code/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

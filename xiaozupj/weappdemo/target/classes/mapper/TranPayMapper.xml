@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.weappdemo.mapper.TranPayMapper">
+
+    <resultMap id="BaseResult" type="cn.edu.guet.weappdemo.bean.TranPay">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="img_pay" jdbcType="VARCHAR" property="img_pay" />
+        <result column="out_trade_no" jdbcType="VARCHAR" property="out_trade_no" />
+        <result column="order_solve" jdbcType="VARCHAR" property="order_solve" />
+        <result column="simple_time" jdbcType="VARCHAR" property="simple_time" />
+        <result column="payment_method" jdbcType="VARCHAR" property="payment_method" />
+    </resultMap>
+
+    <insert id="insertPay" parameterType="cn.edu.guet.weappdemo.bean.TranPay">
+        insert into tran_pay(out_trade_no,simple_time,pay_img,payment_method)
+        values (#{out_trade_no},#{simple_time},#{pay_img},#{payment_method})
+    </insert>
+
+    <select id="findAll" resultMap="BaseResult" >
+        select t.*,o.order_solve
+        from tran_pay t,OrderTrue o
+        where o.out_trade_no=t.out_trade_no;
+    </select>
+
+</mapper>

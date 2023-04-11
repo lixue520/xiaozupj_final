@@ -1,0 +1,8 @@
+com\crush\mybatisplus\controller\TbUserController.class
+com\crush\mybatisplus\mapper\TbUserMapper.class
+com\crush\mybatisplus\entity\TbUser.class
+com\crush\mybatisplus\service\ITbUserService.class
+com\crush\mybatisplus\MyBatisPlus.class
+com\crush\mybatisplus\service\impl\TbUserServiceImpl.class
+com\crush\mybatisplus\config\MybatisPlusConfig.class
+com\crush\mybatisplus\config\MyMetaObjectHandler.class

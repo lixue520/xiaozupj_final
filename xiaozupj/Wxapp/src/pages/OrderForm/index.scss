@@ -1,0 +1,242 @@
+
+//* {
+//  margin: 0;
+//  padding: 0;
+//}
+
+//html, body {
+//  width: 100%;
+//  height: 100%;
+//}
+
+.box {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.title {
+  background-color: #009fff;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+
+}
+
+.info {
+  position: relative;
+  height: 12rem;
+  border: 1px solid red;
+  background: url("http://cnhls.com/Upload/img/banner/banner5-16541369202.jpg") center no-repeat;
+  background-size: cover;
+}
+
+.logo {
+  position: absolute;
+  width: 15rem;
+  height: 7rem;
+  margin: auto;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+.logoimg {
+  width: 5rem;
+  border-radius: 50%;
+}
+
+.detail {
+  width: auto;
+  height: 18rem; //别乱动，设置滑动与导航栏的距离的
+  border: 1px solid #cbcbcb;
+  display: flex;
+  flex-direction: row;
+}
+
+.leftbox {
+  flex: 1;
+  border-right: 1px solid #cbcbcb;
+  box-sizing: border-box;
+  overflow:hidden;
+ // overflow-y: scroll;
+}
+
+.rightbox {
+  //position: relative;
+  flex: 3;
+  box-sizing: border-box;
+  overflow:hidden;
+  overflow-y: scroll;
+}
+
+.rightbox::-webkit-scrollbar {
+  display: none;
+}
+
+.leftmenu {
+  //height: 100%;
+  overflow-y: scroll;
+}
+
+.leftmenu::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+.leftli {
+  padding-left: 1rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #cbcbcb;
+}
+
+.rightmenu {
+  border-bottom: 1px solid #cccccc;
+}
+
+.rightli {
+  padding: .5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.leftdiv {
+  flex: 1;
+}
+
+.rightdiv {
+  position: relative;
+  flex: 4;
+  padding: 0 0.5rem;
+}
+
+.fimg {
+  width: 5rem;
+}
+
+.p1 {
+  font-weight: 700;
+}
+
+.p2 {
+  font-size: .8rem;
+  color: #878787;
+}
+
+.p3 {
+  font-size: .8rem;
+  color: #878787;
+}
+
+.small {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 5rem;
+  height: 1.5rem;
+}
+
+.jian {
+  float: left;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid #000;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  background: #fff;
+  display: none;
+}
+
+.num {
+  display: inline-block;
+  text-align: center;
+  width: 2rem;
+  display: none;
+}
+
+.jia {
+  float: right;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid #000;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  background: #fff;
+}
+
+.check {
+  background: #cccccc;
+}
+
+.test{
+  background: #cccc11;
+  padding-left: 1rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #cbcbcb;
+  font-size: 20px;
+  overflow:auto;
+}
+
+.Carousel-img{
+  width: 100%;
+  height: 400px;
+}
+
+.MyCard-list{
+  width: 150px;
+  height:150px;
+}
+
+.MyCard-list-pay{
+  width: 150px;
+  height:150px;
+  padding-left: 300px;
+}
+
+.imgtest{
+  width: 50px;
+  height:50px;
+}
+
+.Button-test{
+  width: 30px;
+  height:60px;
+  display: inline-block;
+  font-size: 25px;
+  float: right; //浮动
+  border:1px solid #666666;
+  align-items: center;
+}
+
+.input-test{
+  width: 40px;
+  display: inline-block;
+  font-size: 25px;
+  float: right; //浮动
+  vertical-align:middle;
+  height: 30px;
+  text-align: center;
+  font-family: Arial;
+  color: crimson;
+}
+
+//.BoxE-test{
+//  width: 50px;
+//  font-size: 25px;
+//  padding-right:50px;
+//  //padding-right:50px;
+//  float:bottom; //浮动
+//  display: inline-block;
+//  vertical-align:middle;
+//  height: 50px;
+//  text-align: center;
+//  font-family: Arial;
+//  color: crimson;
+//}

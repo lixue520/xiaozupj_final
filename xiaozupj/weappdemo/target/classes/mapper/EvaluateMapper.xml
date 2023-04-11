@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.weappdemo.mapper.EvaluateMapper">
+    <insert id="insertEvaluate">
+        INSERT INTO evaluate VALUES (#{id},#{user_name},#{item_name},#{time},#{evaluate})
+    </insert>
+
+    <delete id="deleteEvaluate">
+        delete from evaluate where id = #{value};
+    </delete>
+
+
+    <select id="findEvaluate" resultType="cn.edu.guet.weappdemo.bean.Evaluate">
+        select * from evaluate;
+    </select>
+    <select id="find1Evaluate" resultType="cn.edu.guet.weappdemo.bean.Evaluate">
+        select * from evaluate WHERE item_name= #{value};
+    </select>
+    <select id="find2Evaluate" resultType="cn.edu.guet.weappdemo.bean.Evaluate">
+        SELECT * FROM `evaluate` ORDER BY item_name asc;
+    </select>
+
+</mapper>

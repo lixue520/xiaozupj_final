@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.weappdemo.mapper.OrderMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.guet.weappdemo.bean.OrderTrue">
+        <result column="Order_id" jdbcType="INTEGER" property="Order_id"/>
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="num" jdbcType="INTEGER" property="num"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="nums" jdbcType="INTEGER" property="nums"/>
+        <result column="img" jdbcType="VARCHAR" property="img" />
+        <result column="out_trade_no" jdbcType="VARCHAR" property="out_trade_no" />
+        <result column="order_solve" jdbcType="VARCHAR" property="order_solve" />
+        <result column="Generation_time" jdbcType="VARCHAR" property="Generation_time" />
+        <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    </resultMap>
+    <!--  下单前购物车订单  -->
+    <sql id="NowOrder">
+            id,name,img,type,price,nums,user_id
+    </sql>
+
+    <!--  List<map>形式插入数据购物车数据  -->
+    <insert id="Add_Pay_Order" parameterType="cn.edu.guet.weappdemo.bean.BaseMenu">
+        insert into HistoryOrder(uuid,mch_id,out_trade_no,order_time,transaction_id)
+        values (#{uuid},#{mch_id},#{out_trade_no},#{order_time},#{transaction_id})
+    </insert>
+
+    <!--  List<map>形式插入数据购物车数据  -->
+    <insert id="Add_Order"  parameterType="list" >
+        insert into OrderTrue(id,name,img,type,price,nums,num,user_id,out_trade_no,Generation_time,order_solve)
+        values
+        <foreach collection="list" item="item"  separator="," >
+            (#{item.id},#{item.name},#{item.img},
+             #{item.type},#{item.price},#{item.nums},
+             #{item.num},#{item.user_id},#{item.out_trade_no},
+             #{item.Generation_time},#{item.order_solve})
+        </foreach>
+    </insert>
+
+   <!-- 更新订单状态:mybits接口参数只有String时，必须指定@Param;否则会将paramType中
+   的参数默认成为接口的参数类ing对#{a}传参，去调用a参数下的get/set方法会报错，添加注解会去对应接口的注解下的值对#{}赋值   -->
+    <update id="Update_Order_State" >
+        update OrderTrue u
+        set u.order_solve='yes'
+        where u.out_trade_no=#{out_trade_no};
+    </update>
+
+    <select id="Select_Current_PayState" parameterType="java.lang.String" resultType="String">
+        select distinct o.order_solve
+        from OrderTrue o
+        where o.out_trade_no=#{out_trade_no}
+    </select>
+
+    <select id="findAllOrder" resultMap="BaseResultMap">
+        SELECT *
+        FROM OrderTrue
+    </select>
+
+    <update id="ChangeState" parameterType="java.util.Map">
+            update OrderTrue u
+            set u.order_solve=#{order_solve}
+            where u.id=#{id} and u.out_trade_no=#{out_trade_no};
+    </update>
+
+    <delete id="DellOrder" parameterType="java.util.Map">
+        DELETE FROM OrderTrue u
+        WHERE u.id=#{id} and u.out_trade_no=#{out_trade_no};
+    </delete>
+
+
+</mapper>

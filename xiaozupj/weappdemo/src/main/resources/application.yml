@@ -1,0 +1,15 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://www.qzwxixi.cn:3306/Wxapp?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: DavidNan
+    password: 123456
+
+
+server:
+  port: 9999
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: cn.edu.guet.weappdemo.bean

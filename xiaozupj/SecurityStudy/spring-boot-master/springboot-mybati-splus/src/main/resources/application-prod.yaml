@@ -1,0 +1,77 @@
+server:
+  port: 8081
+  worker-id: 1
+  data-center-id: 2
+spring:
+  application:
+    name: springboot-mybatis-plus
+  # 数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 阿里的数据库连接池
+    druid:
+      username: root
+      password: 123456
+      url: jdbc:mysql://localhost:3306/commons_utils?serverTimezone=UTC&useSSL=false&characterEncoding=utf8&serverTimezone=GMT
+      # 初使化连接数(向数据库要五个连接)
+      initial-size: 5
+      # 最小连接数(常住10个连接)
+      min-idle: 10
+      # 最大连接数(最多获得10个连接，多到10个数据库将进入一个阻塞状态，等待其他连接释放)
+      max-active: 20
+      # 获取连接最长等待时间，单位毫秒
+      max-wait: 10000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      #配置监控页面
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: admin
+      filter:
+        stat:
+          enabled: true
+          log-slow-sql: true
+          # 慢SQL记录
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+        slf4j:
+          enabled: true
+      keep-alive: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+mybatis-plus:
+  configuration:
+    cache-enabled: true #开启缓存
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
+  mapper-locations: classpath:/mapper/**/*Mapper.xml
+  global-config:
+   db-config:
+    logic-delete-field: flag  # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+    logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+    logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+#logging: #日志打印、sql语句打印
+#  level:
+#    root: info
+#    com.crush.mybatispllus.mapper: debug
+
+
+
+
+

@@ -1,0 +1,20 @@
+server:
+  port: 80
+eureka:
+  client:
+    register-with-eureka: false #服务消费者可以不向服务注册中心注册服务
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+    fetch-registry: true  #服务消费者客户端需要去检索服务
+
+# 在 micro-service-cloud-consumer-dept-feign 的 application.yml 中添加以下配置，将超时时间设置为 6 秒。
+# ：由于 OpenFeign 集成了 Ribbon ，其服务调用以及负载均衡在底层都是依靠
+#  Ribbon 实现的，因此 OpenFeign 超时控制也是通过 Ribbon 来实现的。
+ribbon:
+  ReadTimeout: 6000 #建立连接所用的时间，适用于网络状况正常的情况下，两端两端连接所用的时间
+  ConnectionTimeout: 6000 #建立连接后，服务器读取到可用资源的时间
+
+logging:
+  level:
+    #feign 日志以什么样的级别监控该接口
+    net.biancheng.c.service.DeptFeignService: debug
